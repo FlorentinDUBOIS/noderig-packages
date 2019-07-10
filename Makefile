@@ -16,11 +16,12 @@ deb:
 		--description "Sensision exporter for OS metrics" \
 		--url "https://github.com/ovh/noderig" \
 		--license "BSD-3-Clause" \
-		--version $(shell echo $$(./build/noderig version | awk '{print $$2}')-$$(lsb_release  -cs)) \
+		--version $(shell echo $$(./build/noderig version | awk '{print $$2}')) \
 		-n noderig \
 		-d logrotate \
 		-s dir -t deb \
 		-a all \
+		-p noderig_$(shell echo $$(./build/noderig version | awk '{print $$2}'))-${suite}_ARCH.deb \
 		--deb-user noderig \
 		--deb-group noderig \
 		--deb-no-default-config-files \
